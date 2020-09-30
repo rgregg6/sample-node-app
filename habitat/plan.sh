@@ -14,7 +14,7 @@
 
 pkg_name=sample-node-app
 pkg_origin=genesis
-pkg_version="1.1.0"
+pkg_version="1.1.1"
 pkg_deps=(core/node)
 
 # Habitat provides you with a number of built-in "callbacks" to use
@@ -24,16 +24,10 @@ pkg_deps=(core/node)
 # Here, we're implementing the do_build and do_install callbacks
 # to install dependencies and assemble the application package.
 
-do_build() {
-
-  # By default, we're in the directory in which the Studio was entered
-  # (in this case, presumably the project root), so we can run commands
-  # as though we were in that same directory. By the time we reach this
-  # callback, `npm` will have been installed for us.
-  npm install
+do_build(){ npm install
 }
 
-do_install() {
+do_install(){
 
   # The `pkg_prefix` variable contains the fully-qualified Studio-relative path to
   # a specific build run (e.g., /hab/pkgs/<YOUR_ORIGIN>/sample-node-app/1.1.0/20180620174915).
